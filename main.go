@@ -12,7 +12,7 @@ var (
     dogBreed = "Lurcher"
 )
 //Following Go Fundamentals course by Nigel Poulson on Pluralsight
-//Using Sublime Text adn Terminal
+//Using Sublime Text and Terminal
 //Run this with "go run main.go"
 
 func main () {
@@ -50,4 +50,17 @@ func haveFunWithPointers () {
     //& references a pointer
     fmt.Println("The value of memory address", breedPointer, "is", *breedPointer)
     //* dereferences a pointer
+
+    //You want to pass by reference
+    //Otherwise Go will just create a copy of the variable
+    changeBreedName(&dogBreed)
+    fmt.Println("The value of memory address still is", breedPointer, 
+        "\nBut value has changed to", *breedPointer)
+}
+
+func changeBreedName(dogBreed *string) string {
+
+    *dogBreed = "Japanese Akita" 
+
+    return *dogBreed
 }
