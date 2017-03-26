@@ -4,12 +4,13 @@ import (
        "fmt"
        "runtime"
        "reflect"
+       "os"
 )
 
 var (
     dogName string 
     dogWeight float64
-    dogBreed = "Lurcher"
+    dogBreed = "Lurcher" //type inference
 )
 //Following Go Fundamentals course by Nigel Poulson on Pluralsight
 //Using Sublime Text and Terminal
@@ -20,6 +21,7 @@ func main () {
     getDogInformation()
     doSimpleCalculation()
     haveFunWithPointers()
+    testRandomFunctionality()
 }
 
 func sayHello () {
@@ -59,8 +61,18 @@ func haveFunWithPointers () {
 }
 
 func changeBreedName(dogBreed *string) string {
-
+ 
     *dogBreed = "Japanese Akita" 
 
     return *dogBreed
+}
+
+func testRandomFunctionality () {
+    const daysOfTheWeek = 7 //can't use short hand with consts
+    //const not used but Go doesn't seem to freak out like I thought it would
+
+    for _, env := range os.Environ() {
+        fmt.Println(env)
+    }
+
 }
